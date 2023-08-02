@@ -164,6 +164,7 @@ public class NioEventLoop implements EventLoop {
             try {
                 SocketChannel socketChannel = (SocketChannel) abstractNioChannel.javaChannel();
                 if (socketChannel.finishConnect()) {
+                    System.out.println("客户端和服务端已建立连接");
                     // 将客户端channel状态从SelectionKey.OP_CONNECT改为SelectionKey.OP_READ
                     selectionKey.interestOps(SelectionKey.OP_READ);
 

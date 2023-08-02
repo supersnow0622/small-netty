@@ -6,7 +6,7 @@ import java.util.concurrent.Future;
 
 public abstract class ChannelPromise implements ChannelFuture {
 
-    private boolean done;
+    private volatile boolean done;
     protected Object listener;
 
     public abstract Channel channel();

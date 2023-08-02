@@ -42,10 +42,9 @@ public class Bootstrap extends AbstractBootstrap {
             //此时链接很可能还未成功，在selector上注册OP_CONNECT，在NioEventLoop的selector.select()事件发生时修改socketChannel为OP_READ
             if (!connected) {
                 channel.getSelectionKey().interestOps(SelectionKey.OP_CONNECT);
-                System.out.println("客户端连接远端：" + address + ":" + port + "未成功");
-            } else {
-                System.out.println("客户端连接远端：" + address + ":" + port + "已成功");
+                channel.eventLoop().selector().wakeup();
             }
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

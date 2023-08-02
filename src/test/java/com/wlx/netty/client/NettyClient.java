@@ -12,8 +12,7 @@ public class NettyClient {
 
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group).channel(NioSocketChannel.class)
-                .handler(new MyClientChannelInitializer())
-                ;
+                .handler(new MyClientChannelInitializer());
         bootstrap.connect("127.0.0.1", 8081);
 
     }
